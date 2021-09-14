@@ -1,3 +1,12 @@
+var inputBtn = document.getElementById("input-btn");
+var inputField = document.getElementById("input-field");
+
+inputField.addEventListener("keypress", function(event) {
+    // event.preventDefault();
+    if (event.key == "Enter")
+        inputBtn.click();
+});
+
 const searchField = () => {
     const inputField = document.getElementById('input-field')
     inputFieldText = inputField.value;
@@ -6,7 +15,12 @@ const searchField = () => {
     const url =`https://www.thesportsdb.com/api/v1/json/1/searchteams.php?t=${inputFieldText}`
     fetch(url)
         .then(res => res.json())
-        .then(data =>displaySportsTeams(data.teams))
+        .then(data => displaySportsTeams(data.teams))
+        // .catch(err =>alert('wrong team name'))
+        // const errorDiv = document.getElementById('error');
+        // if (inputField = '') {
+        //     errorDiv.innerHTML ='please give a team name'
+        // }
 
 };
 const displaySportsTeams = teams => {
